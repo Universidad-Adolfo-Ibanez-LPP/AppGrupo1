@@ -22,6 +22,8 @@ void quitar();
 
 void cambiar();
 
+void buscar_libro();
+
 //Creamos el tipo de dato libro
 typedef struct libro
 {
