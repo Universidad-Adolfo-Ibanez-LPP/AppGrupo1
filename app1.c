@@ -144,7 +144,7 @@ void GuardarArchivo(char path[]){
         }
     }
     fclose(archivo);
-    system( "\tread -n 1 -s -p \"Presione cualquier tecla para volver al menu...\"" );
+    system( "\tread -n 1 -s -p \"Presione cualquier tecla para finalizar...\"" );
 }
 
 //Menu principal que contiene la mayoria de procesos
@@ -387,7 +387,7 @@ void quitar()
         if (count!=0)
         {
             printf("\tExisten libros asociados a la sede ingresada\n");
-            printf("\t¿Desea borrarla de todos modos?(Si/No): \n");
+            printf("\t¿Desea borrarla de todos modos?(Si/No): ");
             scanf(" %[^\n]s",borrar);
         }
         for (int i = 0; i < tope; i++)
