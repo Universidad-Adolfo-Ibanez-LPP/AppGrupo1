@@ -281,3 +281,183 @@ void agregar()
     tope=tope+1;
     system( "read -n 1 -s -p \"Presione cualquier tecla para volver al menu...\"" );
 }
+//Quitar
+void quitar()
+{
+    char eliminar[255];
+    char borrar[255];
+    printf("\n\tPuede eliminar las siguientes cosas:\n");
+    printf("\tLibro. \n");
+    printf("\tSede. \n");
+    printf("\tPiso. \n");
+    printf("\tSeccion. \n");
+    printf("\tEscriba que busca eliminar: ");
+    scanf(" %[^\n]s",eliminar);
+    if((strncmp(eliminar, "libro", 100) ==0) || (strncmp(eliminar,"Libro",100)==0)){
+                char libro[255];
+                printf("\tIngrese el libro: ");
+                scanf(" %[^\n]s",libro);
+        for (int i =0; i<tope; i++){
+                if (strncmp(libro, libro_especifico[i].titulo, 100) ==0){
+                    memset(libro_especifico[i].titulo, 0, 100);
+                    memset(libro_especifico[i].autor, 0, 100);
+                    memset(libro_especifico[i].estante_seccion, 0, 100);
+                    memset(libro_especifico[i].edificio, 0, 100);
+                    memset(libro_especifico[i].sede, 0, 100);
+                    libro_especifico[i].anio=0;
+                    libro_especifico[i].piso=0;
+                    libro_especifico[i].estante_numero=0;
+
+                }
+        }
+    }
+    //Sede
+    if((strncmp(eliminar, "sede", 100) ==0) || (strncmp(eliminar,"Sede",100)==0)){ 
+
+        int count= 0;
+        int contador= 0;
+        char sd[255];
+        printf("\tIngrese el nombre de la Sede: ");
+        scanf(" %[^\n]s",sd);
+
+        for (int i = 0; i < tope; i++)
+        {
+            if (i < tope)
+            {
+
+                if (strcmp(sd, libro_especifico[i].sede)==-10 || strcmp(sd, libro_especifico[i].sede)== 0 ) 
+                {
+                    contador=contador+1;
+                }
+            }
+
+        }
+
+
+        if (contador!=0)
+        {
+            printf("\n");
+            printf("\tExisten libros asociados a la sede ingresada\n");
+            printf("\t¿Desea borrarla de todos modos?(Si/No): ");
+            scanf(" %[^\n]s",borrar);
+        }
+        for (int i = 0; i < tope; i++)
+        {   
+                if((strncmp(borrar, "Si",100)==0)||(strncmp(borrar,"si",100)==0))
+                {                        
+                    if (strncmp(sd, libro_especifico[i].sede, 100) ==-10)
+                    {
+                    memset(libro_especifico[i].titulo, 0, 100);
+                    memset(libro_especifico[i].autor, 0, 100);
+                    memset(libro_especifico[i].estante_seccion, 0, 100);
+                    memset(libro_especifico[i].edificio, 0, 100);
+                    memset(libro_especifico[i].sede, 0, 100);
+                    libro_especifico[i].anio=0;                        
+                    libro_especifico[i].piso=0;
+                    libro_especifico[i].estante_numero=0;
+                    }
+                }
+        }
+        if((strncmp(borrar, "No",100)==0)||(strncmp(borrar,"no",100)==0))
+            {
+                printf("\tOk, no se ha borrado ninguna sede\n");
+            }
+        
+           
+    }
+    if((strncmp(eliminar, "piso", 100) ==0) || (strncmp(eliminar,"Piso",100)==0)){ 
+        int count= 0;
+        int ps=0;
+        printf("\tIngrese el numero del piso: ");
+        scanf("%d",&ps);
+
+        for (int i = 0; i < tope; i++)
+        {
+            if (ps==libro_especifico[i].piso)
+            {
+                
+                count= count + 1;
+            }
+
+        }
+
+
+        if (count!=0)
+        {
+            printf("\tExisten libros asociados a la sede ingresada\n");
+            printf("\t¿Desea borrarla de todos modos?(Si/No): \n");
+            scanf(" %[^\n]s",borrar);
+        }
+        for (int i = 0; i < tope; i++)
+        {   
+                if((strncmp(borrar, "Si",100)==0)||(strncmp(borrar,"si",100)==0))
+                {                        
+                    if (ps==libro_especifico[i].piso)
+                    {
+                    memset(libro_especifico[i].titulo, 0, 100);
+                    memset(libro_especifico[i].autor, 0, 100);
+                    memset(libro_especifico[i].estante_seccion, 0, 100);
+                    memset(libro_especifico[i].edificio, 0, 100);
+                    memset(libro_especifico[i].sede, 0, 100);
+                    libro_especifico[i].anio=0;                        
+                    libro_especifico[i].piso=0;
+                    libro_especifico[i].estante_numero=0;
+                    }
+                }
+        }
+        if((strncmp(borrar, "No",100)==0)||(strncmp(borrar,"no",100)==0))
+            {
+                printf("\tOk, no se ha borrado ningun piso\n");
+            }
+        
+    }
+
+    //seccion
+    if((strncmp(eliminar, "seccion", 100) ==0) || (strncmp(eliminar,"Seccion",100)==0)){ 
+        int count= 0;
+        char sc[255];
+        char borrar[255];
+        printf("\tIngrese el nombre de la Seccion: ");
+        scanf(" %[^\n]s",sc);
+
+        for (int i = 0; i < tope; i++)
+        {
+            if (strncmp(sc, libro_especifico[i].estante_seccion, 100) ==0)
+            {
+                count= count + 1;
+            }
+      
+        }
+
+
+        if (count!=0)
+        {
+            printf("\tExisten libros asociados a la seccion ingresada\n");
+            printf("\t¿Desea borrarla de todos modos?(Si/No): ");
+            scanf(" %[^\n]s",borrar);
+        }
+        for (int i = 0; i < tope; i++)
+        {   
+                if((strncmp(borrar, "Si",100)==0)||(strncmp(borrar,"si",100)==0))
+                {                        
+                    if (strncmp(sc, libro_especifico[i].estante_seccion, 100) ==0)
+                    {
+                    memset(libro_especifico[i].titulo, 0, 100);
+                    memset(libro_especifico[i].autor, 0, 100);
+                    memset(libro_especifico[i].estante_seccion, 0, 100);
+                    memset(libro_especifico[i].edificio, 0, 100);
+                    memset(libro_especifico[i].sede, 0, 100);
+                    libro_especifico[i].anio=0;                        
+                    libro_especifico[i].piso=0;
+                    libro_especifico[i].estante_numero=0;
+                    }
+                }
+        }
+        if((strncmp(borrar, "No",100)==0)||(strncmp(borrar,"no",100)==0))
+            {
+                printf("\tOk, no se ha borrado ninguna seccion\n");
+            }
+        
+           
+    }
+}
