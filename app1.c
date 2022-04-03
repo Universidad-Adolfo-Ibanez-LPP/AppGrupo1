@@ -3,7 +3,7 @@
 //Andres Guerra
 //Vicente Garay
 //Vicente Garcia
-//Felipe Gonzales
+//Felipe Gonzalez
 //Tomas Loyola
 
 //librerias
