@@ -195,3 +195,89 @@ void menuprincipal()
             }
     }while (repetir);
 }
+
+//Buscar Libro
+void buscar_libro(){
+    char buscar[255];
+    bool encontrado = false;
+
+    printf("\n\tPor favor diga el titulo del libro que busca: ");
+    scanf(" %[^\n]s",buscar);
+
+    printf("\n");
+    for (int i =0; i<tope; i++){
+        if (strncmp(buscar, libro_especifico[i].titulo, 100) ==0){
+            printf("titulo: %s, autor: %s, anio: %d, estante_numero: %d, estante_seccion: %s, piso: %d, edificio: %s, sede: %s\n",libro_especifico[i].titulo,libro_especifico[i].autor, libro_especifico[i].anio, libro_especifico[i].estante_numero,libro_especifico[i].estante_seccion, libro_especifico[i].piso, libro_especifico[i].edificio, libro_especifico[i].sede);
+            printf("\n");
+            encontrado=true;
+            break;
+        }
+    }
+
+    if (encontrado==false)
+    {
+        printf("\tEl libro que busca no esta en la biblioteca.\n");
+        printf("\n");
+    }
+
+    system( "\tread -n 1 -s -p \"Presione cualquier tecla para volver al menu...\"" );
+
+}
+
+//Agregar
+void agregar()
+{
+    int i= tope;
+    char titulos[255];
+    char autors[255];
+    char anios[255];
+    char estante_n[255];
+    char estante_s[255];
+    char pizo[255];
+    char edif[255];
+    char sed[255];
+    
+    system("@cls||clear");
+    //agregar titulo
+    printf("\tIngrese un titulo: ");
+    scanf(" %[^\n]s",titulos);
+    strcpy(libro_especifico[i].titulo, titulos);
+
+    //agregar autor
+    printf("\tIngrese un/unos autor/autores: ");
+    scanf(" %[^\n]s",autors);
+    strcpy(libro_especifico[i].autor, autors);
+
+    //agregar ano
+    printf("\tIngrese un año: ");
+    scanf(" %[^\n]s",anios);
+    libro_especifico[i].anio= atoi(anios);
+
+    //agregar estante numero
+    printf("\tIngrese el numero del estante: ");
+    scanf(" %[^\n]s",estante_n);
+    libro_especifico[i].estante_numero = atoi(estante_n);
+
+    //agregar estante seccion
+    printf("\tIngrese la seccion del estante: ");
+    scanf(" %[^\n]s",estante_s);
+    strcpy(libro_especifico[i].estante_seccion, estante_s);
+
+    //agregar piso
+    printf("\tIngrese un piso: ");
+    scanf(" %[^\n]s",pizo);
+    libro_especifico[i].piso= atoi(pizo);
+
+    //agregar edificio
+    printf("\tIngrese el edificio: ");
+    scanf(" %[^\n]s",edif);
+    strcpy(libro_especifico[i].edificio, edif);
+
+    //agregar sede
+    printf("\tIngrese la sede: ");
+    scanf(" %[^\n]s",sed);
+    strcpy(libro_especifico[i].sede, sed);
+
+    tope=tope+1;
+    system( "read -n 1 -s -p \"Presione cualquier tecla para volver al menu...\"" );
+}
