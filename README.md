@@ -4,6 +4,6 @@ Grupo 1:
 Participantes:
 Vicente Garay
 Vicente Garcia
-Felipe Gonzales
+Felipe Gonzalez
 Andres Guerra
 Tomas Loyola
