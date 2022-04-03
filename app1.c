@@ -461,3 +461,103 @@ void quitar()
            
     }
 }
+//Cambiar
+void cambiar()
+{
+    char cambiar[255];
+    char seguir_cambiando;
+
+    do 
+    {
+    printf("\n\tPor favor diga el libro que busca cambiar los datos: ");
+    scanf(" %[^\n]s",cambiar);
+    int palabra_encontrada = 0;
+
+    for (int i =0; i<tope; i++){
+        if (strncmp(cambiar, libro_especifico[i].titulo, 100) ==0){
+            char cosa[255];
+            printf("\n\tPuede cambiar las siguientes cosas. \n");
+            printf("\ttitulo. \n");
+            printf("\tautor. \n");
+            printf("\tanio. \n");
+            printf("\tsede. \n");
+            printf("\tpiso. \n");
+            printf("\tnumero estante. \n");
+            printf("\tseccion estante. \n");
+            printf("\tEscriba que busca cambiar: ");
+            scanf(" %[^\n]s", cosa);
+            
+            palabra_encontrada = 1;
+
+            if(strncmp(cosa, "titulo", 100) ==0){
+                char n_titulo[255];
+                printf("\tIngrese el nuevo titulo: ");
+                scanf(" %[^\n]s",n_titulo);
+                strcpy(libro_especifico[i].titulo, n_titulo);
+            }
+            if(strncmp(cosa, "autor", 100) ==0){
+                char n_autor[255];
+                printf("\tIngrese el nuevo/os autor/es: ");
+                scanf(" %[^\n]s", n_autor);
+                strcpy(libro_especifico[i].autor, n_autor);
+            }
+            if(strncmp(cosa, "sede", 100) ==0){
+                char n_sede[255];
+                printf("\tIngrese la nueva sede: ");
+                scanf(" %[^\n]s", n_sede);
+                strcpy(libro_especifico[i].sede, n_sede);
+            }
+            if(strncmp(cosa, "piso", 100) ==0){
+                char n_piso[255];
+                printf("\tIngrese el nuevo piso: ");
+                scanf(" %[^\n]s",n_piso);
+                libro_especifico[i].piso= atoi(n_piso);
+            }
+            if(strncmp(cosa, "anio", 100) ==0){
+                char n_anio[255];
+                printf("\tIngrese el nuevo año: ");
+                scanf(" %[^\n]s",n_anio);
+                libro_especifico[i].anio= atoi(n_anio);
+            }
+            if(strncmp(cosa, "numero estante", 100) ==0){
+                char n_num_estan[255];
+                printf("\tIngrese el nuevo numero de estante: ");
+                scanf(" %[^\n]s",n_num_estan);
+                libro_especifico[i].estante_numero= atoi(n_num_estan);
+            }
+            if(strncmp(cosa, "seccion estante", 100) ==0){
+                char n_sec_estan[255];
+                printf("\tIngrese la nueva seccion: ");
+                scanf(" %[^\n]s", n_sec_estan);
+                strcpy(libro_especifico[i].estante_seccion, n_sec_estan);
+            }
+        }    
+    }
+    if (palabra_encontrada == 0)
+    {
+        //En el caso que el libro este mal ingresado
+        printf("\n");
+        printf("\tNo se a encontrado ningun libro con ese nombre \n");
+        printf("\n");
+        system("\tread -n 1 -s -p \"Presione cualquier tecla para continuar...\"" );
+        printf("\n"); 
+    }    
+    printf("\t¿Quieres seguir cambiando datos?[s/n] ");
+    scanf(" %[^\n]s",&seguir_cambiando);
+    }while(seguir_cambiando == 's');
+}   
+
+
+int main(int argc, char *argv[]){
+    tope = openingFile(argv[1]);
+    arreglado= tope;
+
+    printf("\n");
+    menuprincipal();
+
+    char nombre_del_csv[strlen(argv[1]) + 1];
+    strcpy(nombre_del_csv, argv[1]);
+    GuardarArchivo(nombre_del_csv);
+    printf("\n");
+    return 0;
+}
