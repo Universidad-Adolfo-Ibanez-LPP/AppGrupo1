@@ -347,7 +347,7 @@ void quitar()
         {   
                 if((strncmp(borrar, "Si",100)==0)||(strncmp(borrar,"si",100)==0))
                 {                        
-                    if (strncmp(sd, libro_especifico[i].sede, 100) ==-10)
+                    if (strncmp(sd, libro_especifico[i].sede, 100) ==-10 || strncmp(sd, libro_especifico[i].sede, 100) == 0 )
                     {
                     memset(libro_especifico[i].titulo, 0, 100);
                     memset(libro_especifico[i].autor, 0, 100);
