@@ -1,2 +1,2 @@
 all: 
-	gcc -o app1 app1.c libro.h
+	gcc app1.c -o app1
