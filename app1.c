@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "libro.h"
 
 //funciones menu y submenus
 void menuprincipal();
@@ -24,18 +25,6 @@ void cambiar();
 
 void buscar_libro();
 
-//Creamos el tipo de dato libro
-typedef struct libro
-{
-    char titulo[255];
-    char autor[255];
-    int anio;
-    int estante_numero;
-    char estante_seccion[255];
-    int piso;
-    char edificio[255];
-    char sede[255];
-}libro;
 
 //Se realiza un array de structs para manipular
 libro libro_especifico[999];
